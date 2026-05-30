@@ -70,8 +70,3 @@ Hardware architecture designs released under [CERN Open Hardware Licence Version
 ## Contact
 
 judgeprotocol@pm.me
-
-## Contact
-
-judgeprotocol@pm.me
-
