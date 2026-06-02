@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The Judge Protocol — A universal governance standard for human oversight of artificial intelligence. AI may analyze, recommend and simulate — but a human must authorize.">
+  <meta name="keywords" content="AI governance, human oversight, artificial intelligence, IAIA, Decision Gate, HACK, open standard, Judge Protocol">
+  <meta property="og:title" content="The Judge Protocol">
+  <meta property="og:description" content="A universal governance standard for human oversight of artificial intelligence.">
+  <meta property="og:url" content="https://judgeprotocol.org">
+  <title>The Judge Protocol — Human Oversight of Artificial Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=IBM+Plex+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #1E2761;
+      --purple:  #534AB7;
+      --purple-l:#EEEDFE;
+      --teal:    #028090;
+      --amber:   #854F0B;
+      --coral:   #993C1D;
+      --white:   #FFFFFF;
+      --off:     #F8F7F4;
+      --light:   #EEECE8;
+      --mid:     #888780;
+      --dark:    #2C2C2A;
+      --border:  #D3D1C7;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 300;
+      color: var(--dark);
+      background: var(--white);
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(30, 39, 97, 0.97);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+      padding: 0 2rem;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    nav .logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--white);
+      letter-spacing: 0.03em;
+      text-decoration: none;
+    }
+    nav .logo span { color: #CADCFC; font-weight: 400; }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+    nav ul a {
+      color: #CADCFC;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    nav ul a:hover { color: var(--white); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(83,74,183,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -10%;
+      left: -5%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(2,128,144,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #CADCFC;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.2s forwards;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.4s forwards;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: #CADCFC;
+    }
+    .hero-principle {
+      border-left: 3px solid var(--purple);
+      padding: 1rem 1.5rem;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.6s forwards;
+    }
+    .hero-principle p {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      font-style: italic;
+      color: #CADCFC;
+      line-height: 1.5;
+    }
+    .hero-desc {
+      font-size: 1.05rem;
+      color: rgba(202, 220, 252, 0.8);
+      max-width: 640px;
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.8s forwards;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 1.0s forwards;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.75rem;
+      border-radius: 3px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--purple);
+      color: var(--white);
+      border: 1px solid var(--purple);
+    }
+    .btn-primary:hover { background: #6560CC; border-color: #6560CC; }
+    .btn-secondary {
+      background: transparent;
+      color: #CADCFC;
+      border: 1px solid rgba(202, 220, 252, 0.4);
+    }
+    .btn-secondary:hover { border-color: #CADCFC; color: var(--white); }
+
+    /* ── SECTIONS ── */
+    section { padding: 5rem 2rem; }
+    .container { max-width: 900px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+    .section-body {
+      font-size: 1.05rem;
+      color: #444;
+      max-width: 700px;
+      line-height: 1.8;
+    }
+
+    /* ── CRISIS ── */
+    #crisis { background: var(--off); }
+    .crisis-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+      margin-top: 3rem;
+    }
+    .crisis-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--coral);
+      padding: 1.5rem;
+      border-radius: 2px;
+    }
+    .crisis-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+    .crisis-card p { font-size: 0.92rem; color: #555; line-height: 1.6; }
+
+    /* ── PRINCIPLE ── */
+    #principle { background: var(--navy); }
+    .principle-block {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .principle-block .section-label { color: #CADCFC; }
+    .principle-block .section-title { color: var(--white); }
+    .principle-equation {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin: 2.5rem 0;
+    }
+    .principle-pill {
+      background: rgba(83,74,183,0.2);
+      border: 1px solid rgba(83,74,183,0.5);
+      color: #CADCFC;
+      padding: 0.6rem 1.25rem;
+      border-radius: 2rem;
+      font-size: 0.95rem;
+    }
+    .principle-pill.accent {
+      background: var(--purple);
+      border-color: var(--purple);
+      color: var(--white);
+      font-weight: 600;
+    }
+    .principle-sep { color: rgba(202,220,252,0.4); font-size: 1.2rem; }
+
+    /* ── ARCHITECTURE ── */
+    #architecture { background: var(--white); }
+    .arch-layers { margin-top: 3rem; display: flex; flex-direction: column; gap: 0.75rem; }
+    .arch-layer {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .arch-label {
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+    .arch-blocks {
+      background: var(--white);
+      padding: 0.75rem;
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .arch-block {
+      background: var(--white);
+      border: 1px solid;
+      border-radius: 2px;
+      padding: 0.4rem 0.75rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+    .l-global .arch-label { background: #EEEDFE; color: #3C3489; }
+    .l-global .arch-block { border-color: #534AB7; color: #3C3489; }
+    .l-national .arch-label { background: #E6F1FB; color: #0C447C; }
+    .l-national .arch-block { border-color: #185FA5; color: #0C447C; }
+    .l-silicon .arch-label { background: #FAEEDA; color: #633806; }
+    .l-silicon .arch-block { border-color: #854F0B; color: #633806; }
+    .l-tiers .arch-label { background: #FAEEDA; color: #633806; }
+    .t1 { border-color: #A32D2D !important; color: #791F1F !important; }
+    .t2 { border-color: #854F0B !important; color: #633806 !important; }
+    .t3 { border-color: #0F6E56 !important; color: #085041 !important; }
+    .t4 { border-color: #3B6D11 !important; color: #27500A !important; }
+    .l-domains .arch-label { background: #FAECE7; color: #712B13; }
+    .l-domains .arch-block { border-color: #993C1D; color: #712B13; }
+    .l-legal .arch-label { background: #FBEAF0; color: #72243E; }
+    .l-legal .arch-block { border-color: #993556; color: #72243E; }
+
+    /* ── DOCUMENTS ── */
+    #documents { background: var(--light); }
+    .doc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+      margin-top: 3rem;
+    }
+    .doc-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 1.75rem;
+      border-radius: 2px;
+      text-decoration: none;
+      display: block;
+      transition: all 0.2s;
+      position: relative;
+    }
+    .doc-card:hover { border-color: var(--purple); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(83,74,183,0.1); }
+    .doc-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 0.75rem;
+    }
+    .doc-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+    .doc-card p { font-size: 0.88rem; color: #666; line-height: 1.6; margin-bottom: 1rem; }
+    .doc-doi { font-size: 0.78rem; color: var(--mid); font-family: monospace; }
+
+    /* ── LINEAGE ── */
+    #lineage { background: var(--white); }
+    .lineage-flow {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin: 2.5rem 0;
+    }
+    .lineage-node {
+      background: var(--navy);
+      color: var(--white);
+      padding: 0.5rem 1rem;
+      border-radius: 2px;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+    .lineage-node.accent { background: var(--purple); }
+    .lineage-arrow { color: var(--mid); font-size: 1.2rem; }
+    .lineage-body { font-size: 1rem; color: #444; max-width: 700px; line-height: 1.8; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--navy); }
+    .contact-inner {
+      max-width: 700px;
+    }
+    .contact-inner .section-label { color: #CADCFC; }
+    .contact-inner .section-title { color: var(--white); }
+    .contact-inner .section-body { color: rgba(202,220,252,0.8); margin-bottom: 2.5rem; }
+    .contact-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    .contact-item {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(202,220,252,0.2);
+      padding: 0.75rem 1.25rem;
+      border-radius: 2px;
+      text-decoration: none;
+      color: #CADCFC;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    .contact-item:hover { background: rgba(255,255,255,0.1); border-color: rgba(202,220,252,0.5); }
+    .contact-item strong { color: var(--white); display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.2rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0F1640;
+      padding: 2rem;
+      text-align: center;
+    }
+    footer p { font-size: 0.82rem; color: rgba(202,220,252,0.4); }
+    footer a { color: rgba(202,220,252,0.6); text-decoration: none; }
+    footer a:hover { color: #CADCFC; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      nav ul { display: none; }
+      .arch-layer { grid-template-columns: 100px 1fr; }
+      .arch-label { font-size: 0.72rem; }
+      .principle-equation { gap: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">The Judge Protocol <span>Foundation</span></a>
+  <ul>
+    <li><a href="#crisis">The Crisis</a></li>
+    <li><a href="#architecture">Architecture</a></li>
+    <li><a href="#documents">Documents</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Open Governance Standard · CC BY 4.0 · Judge Protocol Foundation, Sweden</p>
+    <h1>Human oversight of<br><em>artificial intelligence</em></h1>
+    <div class="hero-principle">
+      <p>"AI may analyze, recommend and simulate — but a human must authorize."</p>
+    </div>
+    <p class="hero-desc">
+      The Judge Protocol is a proposed global governance framework establishing a mandatory human authorization layer for all consequential AI decisions — from military targeting to financial markets to autonomous weapons.
+    </p>
+    <div class="hero-actions">
+      <a href="https://github.com/judgeprotocol/protocol/blob/main/judge_protocol_executive_summary_v0_91.pdf" class="btn btn-primary" target="_blank">Read the Executive Summary</a>
+      <a href="https://github.com/judgeprotocol/protocol" class="btn btn-secondary" target="_blank">View on GitHub</a>
+    </div>
+  </div>
+</section>
+
+<!-- CRISIS -->
+<section id="crisis">
+  <div class="container">
+    <p class="section-label">Why this matters now</p>
+    <h2 class="section-title">Every major governance framework<br>has emerged from a defining moment of crisis.</h2>
+    <p class="section-body">
+      AI is embedded in military targeting systems, financial markets, healthcare decisions and critical infrastructure — operating at speeds no human can match, at scales no regulator currently governs, with consequences that are increasingly irreversible. This is that moment.
+    </p>
+    <div class="crisis-grid">
+      <div class="crisis-card">
+        <h3>The Gulf conflict, 2026</h3>
+        <p>AI systems embedded in active military planning and target identification without a universally agreed governance framework.</p>
+      </div>
+      <div class="crisis-card">
+        <h3>Nuclear AI simulations</h3>
+        <p>AI models recommended nuclear strikes in 95% of simulated crisis scenarios. No model ever chose de-escalation. — King's College London, 2026</p>
+      </div>
+      <div class="crisis-card">
+        <h3>Magnifica Humanitas, 2026</h3>
+        <p>Pope Leo XIV: "It is not permissible to entrust AI systems with lethal decisions." The moral case has been made. The technical architecture to enforce it is what this framework proposes.</p>
+      </div>
+      <div class="crisis-card">
+        <h3>The governance vacuum</h3>
+        <p>No existing framework addresses the cross-domain, cross-border nature of AI risk. None establish a binding global mechanism for human authorization.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRINCIPLE -->
+<section id="principle">
+  <div class="container">
+    <div class="principle-block">
+      <p class="section-label">The core principle</p>
+      <h2 class="section-title" style="color:white;">The same logic that built the internet</h2>
+      <p style="color:rgba(202,220,252,0.8);font-size:1rem;margin-bottom:2rem;">
+        In TCP/IP, no packet is considered delivered without an explicit acknowledgement signal. The Judge Protocol applies the same principle to AI governance.
+      </p>
+      <div class="principle-equation">
+        <span class="principle-pill">AI may analyze</span>
+        <span class="principle-sep">·</span>
+        <span class="principle-pill">AI may recommend</span>
+        <span class="principle-sep">·</span>
+        <span class="principle-pill">AI may simulate</span>
+        <span class="principle-sep">→</span>
+        <span class="principle-pill accent">A human must authorize</span>
+      </div>
+      <p style="color:rgba(202,220,252,0.7);font-size:0.92rem;">
+        No AI action is considered authorized until an explicit human acknowledgement is received.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ARCHITECTURE -->
+<section id="architecture">
+  <div class="container">
+    <p class="section-label">Framework Overview</p>
+    <h2 class="section-title">Enterprise Architecture</h2>
+    <p class="section-body">
+      The Judge Protocol operates across three interdependent layers — silicon enforcement, national governance, and global oversight — with domain-specific rule sets and an open legal standard.
+    </p>
+    <div class="arch-layers">
+      <div class="arch-layer l-global">
+        <div class="arch-label">Global<br>Layer 3<br>IAIA</div>
+        <div class="arch-blocks">
+          <span class="arch-block">IAIA</span>
+          <span class="arch-block">Global Emergency Dashboard</span>
+          <span class="arch-block">Global AI Registry</span>
+          <span class="arch-block">GÉANT Backbone</span>
+        </div>
+      </div>
+      <div class="arch-layer l-national">
+        <div class="arch-label">National<br>Layer 2<br>NAIA</div>
+        <div class="arch-blocks">
+          <span class="arch-block">NAIA</span>
+          <span class="arch-block">Decision Gate Platform</span>
+          <span class="arch-block">GAE</span>
+          <span class="arch-block">Human Authorizer</span>
+        </div>
+      </div>
+      <div class="arch-layer l-silicon">
+        <div class="arch-label">Silicon<br>Layer 1<br>HACK</div>
+        <div class="arch-blocks">
+          <span class="arch-block">HACK</span>
+          <span class="arch-block">COE</span>
+          <span class="arch-block">ACP</span>
+          <span class="arch-block">On-chip Audit Log</span>
+        </div>
+      </div>
+      <div class="arch-layer l-tiers">
+        <div class="arch-label">Decision<br>Gate Tiers</div>
+        <div class="arch-blocks">
+          <span class="arch-block t1">Tier 1 — Hard Stop</span>
+          <span class="arch-block t2">Tier 2 — High</span>
+          <span class="arch-block t3">Tier 3 — Significant</span>
+          <span class="arch-block t4">Tier 4 — Routine</span>
+        </div>
+      </div>
+      <div class="arch-layer l-domains">
+        <div class="arch-label">Domain<br>Rule Sets</div>
+        <div class="arch-blocks">
+          <span class="arch-block">Military</span>
+          <span class="arch-block">Financial</span>
+          <span class="arch-block">Healthcare</span>
+          <span class="arch-block">Infrastructure</span>
+          <span class="arch-block">Judicial</span>
+          <span class="arch-block">Physical P1–P4</span>
+        </div>
+      </div>
+      <div class="arch-layer l-legal">
+        <div class="arch-label">Legal &amp;<br>Open Standard</div>
+        <div class="arch-blocks">
+          <span class="arch-block">JP Foundation</span>
+          <span class="arch-block">CC BY 4.0 / CERN OHL</span>
+          <span class="arch-block">HACK Alliance</span>
+          <span class="arch-block">Evolution Clause</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCUMENTS -->
+<section id="documents">
+  <div class="container">
+    <p class="section-label">Published documents</p>
+    <h2 class="section-title">Open standard · CC BY 4.0</h2>
+    <p class="section-body">All documents are freely available under Creative Commons Attribution 4.0. Cite, share, adapt — attribution required.</p>
+    <div class="doc-grid">
+      <a class="doc-card" href="https://doi.org/10.5281/zenodo.20401666" target="_blank">
+        <p class="doc-tag">Start here</p>
+        <h3>Executive Summary</h3>
+        <p>9-page overview of the framework — core principle, decision gate, governance structure, hardware enforcement and implementation pathway.</p>
+        <p class="doc-doi">DOI: 10.5281/zenodo.20401666</p>
+      </a>
+      <a class="doc-card" href="https://doi.org/10.5281/zenodo.20425549" target="_blank">
+        <p class="doc-tag">Full framework</p>
+        <h3>The Judge Protocol v0.93</h3>
+        <p>Complete governance framework — seven rules, four-tier decision gate, IAIA/NAIA structure, domain rule sets, funding model and roadmap.</p>
+        <p class="doc-doi">DOI: 10.5281/zenodo.20425549</p>
+      </a>
+      <a class="doc-card" href="https://doi.org/10.5281/zenodo.20460111" target="_blank">
+        <p class="doc-tag">Technical architecture</p>
+        <h3>Technical Architecture HLD v0.63</h3>
+        <p>Hardware and software architecture — HACK chip, COE, ACP, three-layer stack, phased implementation from PMO through TMO to FMO silicon.</p>
+        <p class="doc-doi">DOI: 10.5281/zenodo.20460111</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- LINEAGE -->
+<section id="lineage">
+  <div class="container">
+    <p class="section-label">Why it can work</p>
+    <h2 class="section-title">The Geneva Lineage</h2>
+    <div class="lineage-flow">
+      <span class="lineage-node">Geneva Conventions</span>
+      <span class="lineage-arrow">→</span>
+      <span class="lineage-node">IAEA</span>
+      <span class="lineage-arrow">→</span>
+      <span class="lineage-node">CERN</span>
+      <span class="lineage-arrow">→</span>
+      <span class="lineage-node">TCP/IP</span>
+      <span class="lineage-arrow">→</span>
+      <span class="lineage-node">Proton</span>
+      <span class="lineage-arrow">→</span>
+      <span class="lineage-node accent">Judge Protocol</span>
+    </div>
+    <p class="lineage-body">
+      The Judge Protocol does not emerge from a vacuum. It draws inspiration from two proven governance precedents: the IAEA — demonstrating that binding international oversight of dangerous technology is achievable — and CERN — demonstrating that complex international technical infrastructure can be governed independently of any single nation's interests.
+      <br><br>
+      The lineage runs: CERN gave the world the internet. TCP/IP gave it the universal language. Proton emerged directly from CERN scientists to protect the privacy of what CERN created — sovereignty by design, open source. The Judge Protocol applies TCP/IP's own architectural principles to govern the AI systems now running on it.
+      <br><br>
+      <em>Powerful technology belongs to humanity — not to any single nation, company or interest.</em>
+    </p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <p class="section-label">Get involved</p>
+      <h2 class="section-title">The framework is open.<br>The conversation is urgent.</h2>
+      <p class="section-body">
+        The Judge Protocol is a working draft designed to evolve. Contributions, institutional engagement and expert review are welcome. The standard is open — owned by nobody, available to everyone.
+      </p>
+      <div class="contact-links">
+        <a class="contact-item" href="mailto:judgeprotocol@pm.me">
+          <strong>Email</strong>
+          judgeprotocol@pm.me
+        </a>
+        <a class="contact-item" href="https://github.com/judgeprotocol/protocol" target="_blank">
+          <strong>GitHub</strong>
+          github.com/judgeprotocol/protocol
+        </a>
+        <a class="contact-item" href="https://doi.org/10.5281/zenodo.20425549" target="_blank">
+          <strong>Cite</strong>
+          DOI: 10.5281/zenodo.20425549
+        </a>
+      </div>
+      <a href="https://github.com/judgeprotocol/protocol/blob/main/judge_protocol_executive_summary_v0_91.pdf" class="btn btn-primary" target="_blank">Download the Executive Summary</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>
+    © 2026 Alexander Hofmann · Judge Protocol Foundation · Stockholm, Sweden ·
+    <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a> ·
+    <a href="https://github.com/judgeprotocol/protocol" target="_blank">GitHub</a>
+  </p>
+</footer>
+
+</body>
+</html>
