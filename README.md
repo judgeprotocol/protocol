@@ -1,96 +1,92 @@
 # The Judge Protocol
 
-**A Framework for Hardware-Enforced Human Oversight of Artificial Intelligence**
+**A universal governance standard for human oversight of artificial intelligence.**
 
-> *"AI may analyze, recommend and simulate — but a human must authorize."*
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20401666.svg)](https://doi.org/10.5281/zenodo.20401666)
-[![DOI (Technical HLD)](https://zenodo.org/badge/DOI/10.5281/zenodo.20460111.svg)](https://doi.org/10.5281/zenodo.20460111)
-[![License: CC BY 4.0](https://img.shields.io/badge/Text-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-[![License: CERN-OHL-S v2](https://img.shields.io/badge/Hardware-CERN--OHL--S%20v2-blue.svg)](https://ohwr.org/cern_ohl_s_v2.txt)
-
-Author: **Alexander Hofmann** · Stockholm, Sweden · judgeprotocol@pm.me
-First external distribution: **March 2026** (v0.85) · DOI registered: **May 2026** · Preprint v1.0: **June 2026**
+*"AI may analyze, recommend and simulate — but a human must authorize."*
 
 ---
 
-## Abstract
+## Why now
 
-Artificial intelligence is now embedded in military targeting, financial markets, healthcare, and critical infrastructure — operating at speeds and scales no existing governance framework addresses. The Judge Protocol is a proposed global open standard establishing a **mandatory human authorization layer for all consequential AI actions**, enforced in hardware below the software stack.
+When one government can switch off global AI without control — June 2026, US export directive, Fable 5 — the case for international authorization infrastructure is no longer theoretical.
 
-The architectural model is TCP/IP: no packet is considered delivered without an explicit acknowledgement. In the Judge Protocol, **no consequential AI action is considered authorized without an explicit, cryptographically signed human acknowledgement (ACK)** — verified in silicon before compute capacity is released for execution.
+Every proposed governance regime addresses testing, safety classification, or model release. None mandates a runtime human authorization layer. The Judge Protocol specifies one.
 
-## Core Components
+*Testing gates the release. Authorization gates the action.*
 
-**The Decision Gate** — every consequential AI action is classified into four tiers before execution:
+---
+
+## What it is
+
+The Judge Protocol is a proposed global governance framework that requires explicit human authorization for every consequential AI action — enforced at the hardware level, governed internationally, owned by no single state.
+
+The framework proposes:
+
+- An **International Artificial Intelligence Agency (IAIA)** — a UN specialized agency modelled on the IAEA, with national implementation bodies (NAIA) in every member state
+- **HACK — Hardware ACK** — a hardware enforcement mechanism embedded in AI accelerator silicon, implementing a chip-level gate that locks compute capacity until a verified human authorization token is received
+- A **four-tier Decision Gate** — a structured human authorization mechanism covering all consequential AI actions across twelve domains
+- **ACP — Action Classification Protocol** — a lightweight descriptor attached to every compute instruction, providing context for the HACK chip before execution
+- **PACK — Physical ACK** — a two-part human authorization for the physical domain, covering robotics and autonomous systems
+
+Built on the same architectural principle as TCP/IP: just as no packet is considered delivered without an explicit ACK, no consequential AI action is considered authorized without an explicit human acknowledgement.
+
+---
+
+## The Four-Tier Decision Gate
 
 | Tier | Classification | Authorization |
-| --- | --- | --- |
-| **Tier 1 — Hard Stop** | Existential, permanently irreversible (nuclear, biological, chemical, mass-casualty) | Hard stop in hardware logic. No override. AI cannot recommend, simulate or execute. |
-| **Tier 2 — High** | Irreversible, large-scale (strike authorization, infrastructure shutdown) | Multi-party human authorization — minimum two independent authorities |
-| **Tier 3 — Significant** | Material impact, partially reversible (large transactions, clinical decisions) | Single designated human authority |
-| **Tier 4 — Routine** | Standard, reversible, low impact | AI executes autonomously — logged and auditable |
+|---|---|---|
+| Tier 1 — Hard Stop | Existential, permanently irreversible | Hardware logic — no override, no execution |
+| Tier 2 — High | Irreversible, large-scale | Multi-party human authorization |
+| Tier 3 — Significant | Material impact, partially reversible | Single designated human authority |
+| Tier 4 — Routine | Standard, reversible, low impact | AI executes autonomously — logged and auditable |
 
-**The HACK (Hardware ACK)** — a dedicated enforcement module co-packaged with AI accelerator silicon (CV32E40S RISC-V core, OpenTitan Chain of Evidence). It logs every Decision Gate event to tamper-proof on-chip memory, hard-stops Tier 1 actions in hardware logic, and gates compute capacity for Tier 2/3 actions pending a verified human ACK token. Adoption pathway modelled on the Trusted Platform Module (TPM → ISO/IEC 11889).
-
-**The Governance Architecture** — a two-layer institutional structure: **National AI Authorities (NAIA)** responsible for compliance within member states, coordinated by an **International Artificial Intelligence Agency (IAIA)** modelled on the IAEA. Sovereignty by design: compliance metadata flows upward only — national data never crosses borders.
-
-**The Audit Trail** — every Decision Gate event generates an immutable log entry: system identifier, action classification, human authorizer identity, timestamp, rationale, outcome. Retained a minimum of ten years. Accountability is not aspirational — it is architectural.
-
-## Relationship to Current Policy Proposals
-
-Pre-deployment testing regimes — such as the mandatory third-party model testing proposed in Anthropic CEO Dario Amodei's *Policy on the AI Exponential* (June 10, 2026) — gate **what gets released**. The Judge Protocol gates **what deployed systems do**: a runtime authorization and enforcement layer that makes such regimes verifiable rather than aspirational. The two approaches are complementary; neither is sufficient alone. See [`positioning_note.md`](positioning_note.md).
-
-The protocol's novel contribution is the **combination** of: (1) a universal human authorization layer across all domains and jurisdictions; (2) hardware enforcement at silicon level; (3) a two-layer global/national governance architecture. Related work — EU AI Act, Rome Call, Bletchley Declaration, RAND/CNAS hardware-enabled mechanisms, flexHEG — is addressed in Section 6 of the preprint.
+---
 
 ## Documents
 
-| Document | Version | Date | Link |
-| --- | --- | --- | --- |
-| Preprint — *The Judge Protocol* | v1.0 | June 2026 | [`judge_protocol_preprint_v1_0.pdf`](judge_protocol_preprint_v1_0.pdf) |
-| Executive Summary | v0.91 | May 2026 | [`judge_protocol_executive_summary_v0_91.pdf`](judge_protocol_executive_summary_v0_91.pdf) |
-| Full Protocol (working draft) | v0.93 | May 2026 | [`judge_protocol_v0_93.pdf`](judge_protocol_v0_93.pdf) |
-| Technical Architecture HLD (working draft) | v0.63 | May 2026 | [`judge_protocol_hld_v0_63.pdf`](judge_protocol_hld_v0_63.pdf) |
-
-Archived with timestamped DOIs at Zenodo: [10.5281/zenodo.20401666](https://doi.org/10.5281/zenodo.20401666) (protocol) and [10.5281/zenodo.20460111](https://doi.org/10.5281/zenodo.20460111) (technical HLD).
-
-## Status and Call for Collaboration
-
-This is a working framework offered as a rigorous starting point, not a finished instrument. Open areas where expert collaboration is sought before v1.0:
-
-- **Military and defense rule set** — to be developed with the ICRC, the UN GGE on LAWS, and member state defense establishments
-- **HACK hardware specification** — detailed silicon specification pending engagement with a neutral technical authority (CERN Openlab proposed)
-- **Founding sandbox partner** — a national authority to deploy the Phase 1 sandbox and generate the evidence base for v1.0
-- **Domain rule sets** — financial markets, healthcare, judicial and transport working papers in development
-
-Contact: **judgeprotocol@pm.me**
-
-## License
-
-Text: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) · Hardware architecture designs: [CERN-OHL-S v2](https://ohwr.org/cern_ohl_s_v2.txt) · Attribution: Alexander Hofmann.
-
-## Citation
-
-```bibtex
-@misc{hofmann2026judgeprotocol,
-  author       = {Hofmann, Alexander},
-  title        = {The Judge Protocol: A Framework for Hardware-Enforced
-                  Human Oversight of Artificial Intelligence},
-  year         = {2026},
-  month        = jun,
-  publisher    = {Zenodo},
-  doi          = {10.5281/zenodo.20401666},
-  url          = {https://doi.org/10.5281/zenodo.20401666},
-  note         = {Preprint v1.0. First external distribution March 2026.}
-}
-```
+| Document | Description | DOI |
+|---|---|---|
+| [Executive Summary v0.91](https://github.com/judgeprotocol/protocol/blob/main/judge_protocol_executive_summary_v0_91.pdf) | Start here — 9-page overview of the framework | [10.5281/zenodo.20401666](https://doi.org/10.5281/zenodo.20401666) |
+| [The Judge Protocol v0.93](https://github.com/judgeprotocol/protocol/blob/main/judge_protocol_v0_93.pdf) | Full framework — governance structure, decision gate, hardware enforcement, domain rules, funding model | [10.5281/zenodo.20425549](https://doi.org/10.5281/zenodo.20425549) |
+| [Technical Architecture HLD v0.65](https://github.com/judgeprotocol/protocol/blob/main/judge_protocol_hld_v0_65.pdf) | Hardware and software architecture — HACK chip, COE, ACP, three-layer stack, phased implementation | [10.5281/zenodo.20460111](https://doi.org/10.5281/zenodo.20460111) |
+| [Master Deck](https://github.com/judgeprotocol/protocol/blob/main/judge_protocol_master_deck.pdf) | Presentation deck — 15 slides covering the full framework for briefings and outreach | — |
 
 ---
 
-`ai-governance` `human-oversight` `hardware-enforcement` `open-standard` `decision-gate` `ai-safety` `risc-v` `opentitan` `iaea-model` `tcp-ip`
+## Governance model
+
+The Judge Protocol is not owned by any company, government, or individual. It is an open standard.
+
+- Text released under [Creative Commons Attribution 4.0 (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/)
+- Hardware architecture released under [CERN Open Hardware Licence v2 — Strongly Reciprocal (CERN-OHL-S v2)](https://ohwr.org/cern_ohl_s_v2.txt)
+- Institutional home: **Judge Protocol Foundation**, Stockholm, Sweden — *ideell förening*, neutral jurisdiction, no VC, no single-state control
+
+The CERN OHL-S licence is chosen deliberately: CERN played this role for the World Wide Web. The HACK chip standard is designed to follow the same path — open, internationally governed, owned by nobody.
+
+---
+
+## Three open invitations
+
+**1 — Founding Sandbox Partner**
+One national authority. One domain. Twelve months. Deploy the Decision Gate Platform, publish the evidence base, become the founding node of the global network.
+
+**2 — CERN / Hardware Collaboration**
+The HACK specification requires a neutral technical authority. HLD Sections 4–8 are open for co-development under CERN OHL-S v2 via Openlab.
+
+**3 — Military Exception Working Group**
+The most sensitive open question in the framework. Must be resolved with ICRC, UN GGE on LAWS, and member state defense establishments before v1.0 ratification. Experts invited.
+
+---
+
+## Status
+
+Working draft — open for review, contribution, and collaboration. The framework is designed to evolve through an explicit Evolution Clause with two-year review cycles.
+
+Published by the **Judge Protocol Foundation**, Stockholm, Sweden.
 
 ---
 
 ## Contact
 
-judgeprotocol@pm.me
+judgeprotocol@pm.me · [judgeprotocol.org](https://judgeprotocol.org)
