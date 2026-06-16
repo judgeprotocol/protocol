@@ -49,7 +49,7 @@ Built on the same architectural principle as TCP/IP: just as no packet is consid
 |---|---|---|
 | [Executive Summary v0.91](https://github.com/judgeprotocol/protocol/blob/main/judge_protocol_executive_summary_v0_91.pdf) | Start here — 9-page overview of the framework | [10.5281/zenodo.20401666](https://doi.org/10.5281/zenodo.20401666) |
 | [The Judge Protocol v0.93](https://github.com/judgeprotocol/protocol/blob/main/judge_protocol_v0_93.pdf) | Full framework — governance structure, decision gate, hardware enforcement, domain rules, funding model | [10.5281/zenodo.20425549](https://doi.org/10.5281/zenodo.20425549) |
-| [Technical Architecture HLD v0.65](https://github.com/judgeprotocol/protocol/blob/main/judge_protocol_hld_v0_65.pdf) | Hardware and software architecture — HACK chip, COE, ACP, three-layer stack, phased implementation | [10.5281/zenodo.20460111](https://doi.org/10.5281/zenodo.20460111) |
+| [Technical Architecture HLD v0.65](https://github.com/judgeprotocol/protocol/blob/main/judge_protocol_hld_v0_65.pdf) | Hardware and software architecture — HACK chip, COE, ACP, three-layer stack, phased implementation |[Technical Architecture HLD v0.65](...) | [10.5281/zenodo.20722119](https://doi.org/10.5281/zenodo.20722119) |
 | [Master Deck](https://github.com/judgeprotocol/protocol/blob/main/judge_protocol_master_deck.pdf) | Presentation deck — 15 slides covering the full framework for briefings and outreach | — |
 
 ---
