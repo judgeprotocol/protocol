@@ -66,16 +66,20 @@ The CERN OHL-S licence is chosen deliberately: CERN played this role for the Wor
 
 ---
 
-## Three open invitations
+## Interactive Demo
 
-**1 — Founding Sandbox Partner**
-One national authority. One domain. Twelve months. Deploy the Decision Gate Platform, publish the evidence base, become the founding node of the global network.
+A working software simulation of the Decision Gate authorization mechanism:
+[Try the Decision Gate Simulator](https://judgeprotocol.org/Demos/judge_protocol_decision_gate_simulator.html)
 
-**2 — CERN / Hardware Collaboration**
-The HACK specification requires a neutral technical authority. HLD Sections 4–8 are open for co-development under CERN OHL-S v2 via Openlab.
+Select any of four example scenarios spanning all four tiers — from a routine
+report to a lethal-engagement request — and see how each is classified
+(reversibility, blast radius, novelty) and gated in real time: silent
+autonomous execution, single-authority ACK, dual-authority ACK, or an
+unconditional hard stop. Every action is recorded to a live audit log.
 
-**3 — Military Exception Working Group**
-The most sensitive open question in the framework. Must be resolved with ICRC, UN GGE on LAWS, and member state defense establishments before v1.0 ratification. Experts invited.
+**Note:** this is a software simulation of the mechanism for demonstration
+purposes. The published architecture (see HLD §6) enforces Tier 1 in
+hardware, below the software stack — no UI can substitute for that guarantee.
 
 ---
 
