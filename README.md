@@ -1,14 +1,4 @@
-# The Judge Protocol
-
-**A universal governance standard for human oversight of artificial intelligence.**
-
-*"AI may analyze, recommend and simulate — but a human must authorize."*
-
----
-
-## Why now
-
-When one government can switch off global AI without control — June 2026, US export directive, Fable 5 — the case for international authorization infrastructure is no longer theoretical.
+# The Judge Protocol (TJP)
 
 Every proposed governance regime addresses testing, safety classification, or model release. None mandates a runtime human authorization layer. The Judge Protocol specifies one.
 
@@ -47,10 +37,12 @@ Built on the same architectural principle as TCP/IP: just as no packet is consid
 
 | Document | Description | DOI |
 |---|---|---|
-| [Executive Summary v0.91](https://github.com/judgeprotocol/protocol/blob/main/judge_protocol_executive_summary_v0_91.pdf) | Start here — 9-page overview of the framework | [10.5281/zenodo.20401666](https://doi.org/10.5281/zenodo.20401666) |
-| [The Judge Protocol v0.93](https://github.com/judgeprotocol/protocol/blob/main/judge_protocol_v0_93.pdf) | Full framework — governance structure, decision gate, hardware enforcement, domain rules, funding model | [10.5281/zenodo.20425549](https://doi.org/10.5281/zenodo.20425549) |
-| [Technical Architecture HLD v0.65](https://github.com/judgeprotocol/protocol/blob/main/judge_protocol_hld_v0_65.pdf) | Hardware and software architecture — HACK chip, COE, ACP, three-layer stack, phased implementation |[Technical Architecture HLD v0.65](...) | [10.5281/zenodo.20722119](https://doi.org/10.5281/zenodo.20722119) |
-| [Master Deck](https://github.com/judgeprotocol/protocol/blob/main/judge_protocol_master_deck.pdf) | Presentation deck — 15 slides covering the full framework for briefings and outreach | — |
+| [Executive Summary v0.92](https://github.com/judgeprotocol/protocol/blob/main/judge_protocol_executive_summary_v0_92.pdf) | Start here — overview of the framework | [10.5281/zenodo.20401666](https://doi.org/10.5281/zenodo.20401666) |
+| [The Judge Protocol (TJP) v0.95](https://github.com/judgeprotocol/protocol/blob/main/judge_protocol_v0_95.pdf) | Full framework — governance structure, decision gate, hardware enforcement, domain rules, funding model | [10.5281/zenodo.20425548](https://doi.org/10.5281/zenodo.20425548) |
+| [Technical Architecture HLD v0.67](https://github.com/judgeprotocol/protocol/blob/main/judge_protocol_hld_v0_67.pdf) | Hardware and software architecture — HACK chip, COE, ACP, three-layer stack, phased implementation | [10.5281/zenodo.20460110](https://doi.org/10.5281/zenodo.20460110) |
+| [Preprint v1.0](https://github.com/judgeprotocol/protocol/blob/main/judge_protocol_preprint_v1_0_110626a.pdf) | Formal preprint version | — |
+| [Master Deck](https://github.com/judgeprotocol/protocol/blob/main/judge_protocol_master_deck_160626a.pdf) | Presentation deck — covering the full framework for briefings and outreach | — |
+| [Positioning Note](https://github.com/judgeprotocol/protocol/blob/main/positioning_note.md) | Framework positioning relative to other AI governance proposals | — |
 
 ---
 
@@ -88,6 +80,12 @@ hardware, below the software stack — no UI can substitute for that guarantee.
 Working draft — open for review, contribution, and collaboration. The framework is designed to evolve through an explicit Evolution Clause with two-year review cycles.
 
 Published by the **Judge Protocol Foundation**, Stockholm, Sweden.
+
+---
+
+## Contact
+
+judgeprotocol@pm.me · [judgeprotocol.org](https://judgeprotocol.org)
 
 ---
 
