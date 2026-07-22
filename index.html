@@ -8,6 +8,12 @@
   <meta property="og:title" content="The Judge Protocol">
   <meta property="og:description" content="A universal governance standard for human oversight of artificial intelligence.">
   <meta property="og:url" content="https://judgeprotocol.org">
+  <meta property="og:image" content="https://judgeprotocol.org/og_card_1200x630.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <title>The Judge Protocol — Human Oversight of Artificial Intelligence</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -108,9 +114,35 @@
       background: radial-gradient(circle, rgba(2,128,144,0.1) 0%, transparent 70%);
       pointer-events: none;
     }
-    .hero-inner {
-      max-width: 860px;
+    .hero-flex {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      max-width: 1300px;
+      width: 100%;
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-mark {
+      flex: 0 0 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-mark svg {
+      width: 100%;
+      max-width: 340px;
+      height: auto;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-mark #chevron { animation: none !important; }
+    }
+    @media (max-width: 960px) {
+      .hero-mark { display: none; }
+    }
+    .hero-inner {
+      max-width: 700px;
       position: relative;
       z-index: 1;
     }
@@ -453,6 +485,59 @@
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-flex">
+
+  <div class="hero-mark">
+    <svg viewBox="0 0 680 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Judge Protocol mark">
+      <circle cx="340" cy="195" r="158" fill="none" stroke="#CADCFC" stroke-width="0.8" opacity="0.55"/>
+      <circle cx="340" cy="195" r="153" fill="none" stroke="#CADCFC" stroke-width="0.6" opacity="0.4"/>
+      <circle cx="340" cy="195" r="148" fill="none" stroke="#CADCFC" stroke-width="0.6" opacity="0.35"/>
+      <circle cx="340" cy="195" r="142" fill="none" stroke="#CADCFC" stroke-width="0.4" opacity="0.2"/>
+      <circle cx="340" cy="195" r="158" fill="none" stroke="#534AB7" stroke-width="3"/>
+      <circle cx="340" cy="195" r="151" fill="none" stroke="#3C3489" stroke-width="3"/>
+      <rect x="321" y="27" width="38" height="32" fill="#1E2761"/>
+
+      <g fill="#CADCFC" opacity="0.35">
+        <circle cx="372" cy="41"  r="1.5"/><circle cx="401" cy="52"  r="1.5"/><circle cx="426" cy="71"  r="1.5"/>
+        <circle cx="445" cy="96"  r="1.5"/><circle cx="455" cy="124" r="1.5"/><circle cx="457" cy="154" r="1.5"/>
+        <circle cx="450" cy="184" r="1.5"/><circle cx="435" cy="211" r="1.5"/><circle cx="414" cy="232" r="1.5"/>
+        <circle cx="389" cy="246" r="1.5"/><circle cx="362" cy="252" r="1.5"/><circle cx="340" cy="254" r="1.5"/>
+        <circle cx="318" cy="252" r="1.5"/><circle cx="291" cy="246" r="1.5"/><circle cx="266" cy="232" r="1.5"/>
+        <circle cx="245" cy="211" r="1.5"/><circle cx="230" cy="184" r="1.5"/><circle cx="223" cy="154" r="1.5"/>
+        <circle cx="225" cy="124" r="1.5"/><circle cx="235" cy="96"  r="1.5"/><circle cx="254" cy="71"  r="1.5"/>
+        <circle cx="279" cy="52"  r="1.5"/><circle cx="308" cy="41"  r="1.5"/>
+      </g>
+
+      <g id="gate-marks" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round">
+        <line x1="333.7" y1="30" x2="333.7" y2="45"/>
+        <line x1="346.3" y1="30" x2="346.3" y2="45"/>
+      </g>
+      <circle id="pulse" cx="340" cy="37" r="3.5" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0"/>
+
+      <polygon points="340,83 414,203 266,203" fill="#171E4D" stroke="#CADCFC" stroke-width="1"/>
+      <polygon points="340,95 406,199 274,199" fill="none" stroke="#FFFFFF" stroke-width="0.5" opacity="0.3"/>
+      <line x1="340" y1="99" x2="340" y2="191" stroke="#CADCFC" stroke-width="0.5" stroke-dasharray="3 3" opacity="0.5"/>
+
+      <circle cx="340" cy="96"  r="4" fill="#FFFFFF"/>
+      <text x="340" y="109" text-anchor="middle" font-family="'Arial Narrow', Arial, sans-serif" font-size="8.5" font-weight="600" fill="#FFFFFF" letter-spacing="1">IAIA</text>
+      <line x1="322" y1="145" x2="358" y2="145" stroke="#FFFFFF" stroke-width="0.5" opacity="0.7"/>
+      <circle cx="340" cy="145" r="3" fill="#E7ECFB"/>
+      <text x="340" y="158" text-anchor="middle" font-family="'Arial Narrow', Arial, sans-serif" font-size="8.5" font-weight="600" fill="#E7ECFB" letter-spacing="1">NAIA</text>
+      <line x1="311" y1="173" x2="369" y2="173" stroke="#FFFFFF" stroke-width="0.5" opacity="0.5"/>
+      <circle cx="340" cy="187" r="3" fill="#CADCFC"/>
+      <text x="340" y="200" text-anchor="middle" font-family="'Arial Narrow', Arial, sans-serif" font-size="8.5" font-weight="600" fill="#CADCFC" letter-spacing="1">HACK</text>
+
+      <line x1="266" y1="218" x2="414" y2="218" stroke="#CADCFC" stroke-width="0.5" opacity="0.4"/>
+      <text x="340" y="236" text-anchor="middle" font-family="Georgia, serif" font-size="16" font-weight="700" fill="#FFFFFF" letter-spacing="0.5">The Judge Protocol</text>
+      <line x1="286" y1="246" x2="394" y2="246" stroke="#CADCFC" stroke-width="0.5" opacity="0.25"/>
+      <text x="340" y="259" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#CADCFC" letter-spacing="2">TJP = OPEN STANDARD</text>
+
+      <g id="chevron">
+        <polyline points="-5,-5 0,0 -5,5" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+    </svg>
+  </div>
+
   <div class="hero-inner">
     <p class="hero-eyebrow">Open Governance Standard · CC BY 4.0 · Judge Protocol Foundation, Sweden</p>
     <h1>Human oversight of<br><em>artificial intelligence</em></h1>
@@ -468,7 +553,53 @@
       <a href="https://github.com/judgeprotocol/protocol" class="btn btn-secondary" target="_blank">View on GitHub</a>
     </div>
   </div>
+
+  </div>
 </section>
+
+<script>
+  (function () {
+    const chevron = document.getElementById('chevron');
+    const pulse = document.getElementById('pulse');
+    if (!chevron || !pulse) return;
+
+    const cx = 340, cy = 195, r = 150;
+    const gateAngle = -Math.PI / 2;
+    const fullTurn = Math.PI * 2;
+    const speed = 0.010;
+    const pauseMs = 850;
+
+    let angle = gateAngle;
+    let state = 'paused';
+    let pauseStart = performance.now();
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function place(a) {
+      const x = cx + r * Math.cos(a);
+      const y = cy + r * Math.sin(a);
+      const deg = (a + Math.PI / 2) * (180 / Math.PI);
+      chevron.setAttribute('transform', `translate(${x},${y}) rotate(${deg})`);
+    }
+    place(angle);
+
+    function frame(ts) {
+      if (reduced) { requestAnimationFrame(frame); return; }
+      if (state === 'paused') {
+        const elapsed = ts - pauseStart;
+        const t = Math.min(elapsed / pauseMs, 1);
+        pulse.setAttribute('opacity', (0.6 * Math.sin(t * Math.PI)).toFixed(2));
+        pulse.setAttribute('r', (3.5 + t * 6).toFixed(1));
+        if (elapsed >= pauseMs) { state = 'traveling'; pulse.setAttribute('opacity', 0); }
+      } else {
+        angle += speed;
+        if (angle >= gateAngle + fullTurn) { angle = gateAngle; state = 'paused'; pauseStart = ts; }
+        place(angle);
+      }
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  })();
+</script>
 
 <!-- CRISIS -->
 <section id="crisis">
