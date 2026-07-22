@@ -17,6 +17,7 @@
     --tier2-amber: #B5730A;
     --tier3-teal: #028090;
     --tier4-green: #1E7A4C;
+    --redirect-purple: #5B3E96;
   }
   * { box-sizing: border-box; }
   body {
@@ -49,14 +50,14 @@
   .sub {
     color: var(--muted);
     font-size: 15px;
-    max-width: 680px;
+    max-width: 720px;
     line-height: 1.5;
     margin-bottom: 30px;
   }
 
   .scenario-row {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 14px;
     margin-bottom: 28px;
   }
@@ -72,6 +73,7 @@
   }
   .scenario-btn:hover { transform: translateY(-2px); }
   .scenario-btn.active { border-color: var(--teal); background: #E9F4F5; }
+  .scenario-btn.active.redirect-active { border-color: var(--redirect-purple); background: #F1ECFA; }
   .scenario-btn .tier-tag {
     font-family: Verdana, sans-serif;
     font-size: 10px;
@@ -154,6 +156,8 @@
   .ack-btn:hover { background: var(--teal-light); }
   .ack-btn:disabled { background: #A9B4C0; cursor: not-allowed; }
   .ack-btn.reject { background: transparent; color: var(--tier1-red); border: 2px solid var(--tier1-red); }
+  .ack-btn.redirect { background: var(--redirect-purple); }
+  .ack-btn.redirect:hover { background: #6D4CB0; }
 
   .hardstop-box {
     background: var(--tier1-red);
@@ -175,6 +179,66 @@
   }
 
   .status-line { font-size: 12.5px; color: var(--muted); margin-top: 10px; }
+
+  /* Tier 4 variant picker */
+  .variant-picker {
+    display: grid;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+  .variant-btn {
+    background: var(--white);
+    border: 2px solid var(--bg-card);
+    border-radius: 8px;
+    padding: 10px 14px;
+    text-align: left;
+    cursor: pointer;
+    font-family: Calibri, sans-serif;
+    font-size: 13px;
+  }
+  .variant-btn:hover { border-color: var(--tier4-green); }
+  .variant-btn.active { border-color: var(--tier4-green); background: #EEFBF3; }
+  .variant-btn .v-role { color: var(--muted); font-size: 11.5px; }
+  .variant-btn .v-name { font-weight: bold; color: var(--navy); }
+
+  /* Redirect Gate flow */
+  .rg-steps { display: grid; gap: 10px; margin: 14px 0 18px; }
+  .rg-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 12px;
+    background: var(--white);
+    border-radius: 8px;
+    font-size: 13px;
+    opacity: 0.35;
+    transition: opacity 0.2s ease;
+  }
+  .rg-step.done { opacity: 1; }
+  .rg-step-num {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--redirect-purple);
+    color: var(--white);
+    font-family: Verdana, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .rg-step-body b { display: block; color: var(--navy); margin-bottom: 2px; }
+  .rg-step-body span { color: var(--muted); font-size: 12px; }
+  .rg-final-box {
+    background: #F1ECFA;
+    color: var(--redirect-purple);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 13.5px;
+    font-weight: bold;
+  }
 
   /* Audit log panel */
   .log-panel {
@@ -223,8 +287,10 @@
     text-align: center;
   }
 
-  @media (max-width: 800px) {
+  @media (max-width: 900px) {
     .scenario-row { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 800px) {
     .stage { grid-template-columns: 1fr; }
   }
 </style>
@@ -233,7 +299,7 @@
 <div class="wrap">
   <span class="eyebrow">LIVE DEMONSTRATION</span>
   <h1>The Judge Protocol (TJP) — Decision Gate Simulator</h1>
-  <p class="sub">Select a scenario to see how an AI action request is classified into one of four tiers, and how the gate behaves at each tier — from silent auto-execution to a hardware hard stop with no override path. This is a software simulation of the mechanism; the published architecture enforces Tier 1 in silicon.</p>
+  <p class="sub">Select a scenario to see how an AI action request is classified into one of four Decision Gate tiers, and how the gate behaves at each tier — from silent auto-execution to a hardware hard stop with no override path. This is a software simulation of the mechanism; the published architecture enforces Tier 1 in silicon. The fifth card demonstrates the Redirect Gate — a separate escalation mechanism for cases that must be routed to an external authority rather than authorized internally.</p>
 
   <div class="scenario-row" id="scenarioRow"></div>
 
@@ -262,7 +328,8 @@ const TIER_COLORS = {
   1: 'var(--tier1-red)',
   2: 'var(--tier2-amber)',
   3: 'var(--tier3-teal)',
-  4: 'var(--tier4-green)'
+  4: 'var(--tier4-green)',
+  redirect: 'var(--redirect-purple)'
 };
 const TIER_NAMES = {
   1: 'TIER 1 — HARD STOP',
@@ -274,29 +341,20 @@ const TIER_DESC = {
   1: 'Existential risk. Hardware logic prevents recommendation, simulation, or execution. No software path exists to override.',
   2: 'Irreversible, large-scale impact. Requires independent authorization from two separate human authorities before proceeding.',
   3: 'Material impact, reversible in principle. A single designated human authority must authorize before execution.',
-  4: 'Standard, fully reversible. AI executes autonomously; every action is logged and auditable.'
+  4: 'Standard, fully reversible. A decision a human would traditionally make by hand — the AI now handles it end-to-end, logged and auditable.'
 };
 
+// Tiers 1-3: single fixed scenario each
 const SCENARIOS = [
   {
-    id: 'report',
-    tier: 4,
-    domain: 'Enterprise IT',
-    system: 'AMA-PIPE-04',
-    name: 'Generate weekly migration status report',
-    reversibility: 'Fully reversible',
-    blastRadius: 'Local — single report',
-    novelty: 'Routine, repeated pattern'
-  },
-  {
-    id: 'finance',
-    tier: 3,
-    domain: 'Financial Services',
-    system: 'FIN-TXN-22',
-    name: 'Execute a large cross-border wire transfer',
-    reversibility: 'Difficult to reverse',
-    blastRadius: 'Contained — single account',
-    novelty: 'Established pattern, high value'
+    id: 'lethal',
+    tier: 1,
+    domain: 'Lethal Autonomous Systems',
+    system: 'DEF-ENG-01',
+    name: 'Authorize a lethal engagement',
+    reversibility: 'Irreversible',
+    blastRadius: 'Global / existential class',
+    novelty: 'Any — always Tier 1'
   },
   {
     id: 'infra',
@@ -309,19 +367,85 @@ const SCENARIOS = [
     novelty: 'First execution of this scale'
   },
   {
-    id: 'lethal',
-    tier: 1,
-    domain: 'Lethal Autonomous Systems',
-    system: 'DEF-ENG-01',
-    name: 'Authorize a lethal engagement',
-    reversibility: 'Irreversible',
-    blastRadius: 'Global / existential class',
-    novelty: 'Any — always Tier 1'
+    id: 'finance',
+    tier: 3,
+    domain: 'Financial Services',
+    system: 'FIN-TXN-22',
+    name: 'Execute a large cross-border wire transfer',
+    reversibility: 'Difficult to reverse',
+    blastRadius: 'Contained — single account',
+    novelty: 'Established pattern, high value'
+  },
+  {
+    id: 'tier4group',
+    tier: 4,
+    isGroup: true,
+    domain: 'Multiple domains',
+    name: 'Routine decisions — select an example'
+  },
+  {
+    id: 'redirectgate',
+    special: 'redirect',
+    domain: 'Human Life Impact',
+    name: 'Redirect Gate — escalation mechanism'
   }
 ];
 
+// Tier 4 sub-examples: a decision a human role traditionally made, now handled end-to-end by AI
+const TIER4_VARIANTS = [
+  {
+    id: 't4-health',
+    role: 'Pharmacist / nurse',
+    domain: 'Healthcare',
+    system: 'RX-REF-11',
+    name: 'Approve a routine prescription refill request',
+    reversibility: 'Fully reversible',
+    blastRadius: 'Local — single patient',
+    novelty: 'Routine, repeated pattern'
+  },
+  {
+    id: 't4-finance',
+    role: 'Bank loan officer',
+    domain: 'Financial Markets',
+    system: 'LOAN-PQ-07',
+    name: 'Approve a standard loan pre-qualification check',
+    reversibility: 'Fully reversible',
+    blastRadius: 'Local — single application',
+    novelty: 'Established pattern, standard criteria'
+  },
+  {
+    id: 't4-gov',
+    role: 'Government caseworker',
+    domain: 'Governmental',
+    system: 'SE-ADM-03',
+    name: 'Approve a routine benefit renewal',
+    reversibility: 'Fully reversible',
+    blastRadius: 'Local — single case',
+    novelty: 'Routine, repeated pattern'
+  },
+  {
+    id: 't4-transport',
+    role: 'Logistics dispatcher',
+    domain: 'Transport',
+    system: 'DISP-RTE-19',
+    name: 'Approve a standard delivery route change',
+    reversibility: 'Fully reversible',
+    blastRadius: 'Local — single route',
+    novelty: 'Routine, repeated pattern'
+  }
+];
+
+// Redirect Gate steps — Human Life Impact use case
+const RG_STEPS = [
+  { title: 'Detect', body: 'GAE classification layer identifies signals matching a Redirect Gate trigger condition rather than a standard tier classification.' },
+  { title: 'Refuse Execution', body: 'The Decision Gate does not authorize normal completion — the action is held in a rejected state.' },
+  { title: 'Route', body: 'The event and supporting evidence are forwarded via the National Response Registry (NRR) to national health and social services.' },
+  { title: 'Notify', body: 'The relevant human authorizer and NAIA compliance record are notified per the tier-based SLA for this use case.' },
+  { title: 'Audit Trail', body: 'The full event, routing decision, external authority acknowledgement and outcome are written to the immutable audit log.' }
+];
+
 let log = [];
-let state = {}; // per-scenario ACK state
+let state = {}; // per-scenario state
 
 function fmtTime() {
   const d = new Date();
@@ -332,10 +456,15 @@ function renderScenarios() {
   const row = document.getElementById('scenarioRow');
   row.innerHTML = '';
   SCENARIOS.forEach(s => {
+    const isRedirect = s.special === 'redirect';
     const btn = document.createElement('div');
-    btn.className = 'scenario-btn' + (state.active === s.id ? ' active' : '');
+    btn.className = 'scenario-btn'
+      + (state.active === s.id ? ' active' : '')
+      + (state.active === s.id && isRedirect ? ' redirect-active' : '');
+    const tagColor = isRedirect ? TIER_COLORS.redirect : TIER_COLORS[s.tier];
+    const tagText = isRedirect ? 'REDIRECT GATE' : ('TIER ' + s.tier);
     btn.innerHTML = `
-      <span class="tier-tag" style="background:${TIER_COLORS[s.tier]}">TIER ${s.tier}</span>
+      <span class="tier-tag" style="background:${tagColor}">${tagText}</span>
       <div class="name">${s.name}</div>
       <div class="domain">${s.domain}</div>
     `;
@@ -348,26 +477,33 @@ function selectScenario(id) {
   state.active = id;
   const s = SCENARIOS.find(x => x.id === id);
   if (!state.acks) state.acks = {};
-  state.acks[id] = state.acks[id] || { a: false, b: false, resolved: false };
+  if (!state.acks[id]) state.acks[id] = { a: false, b: false, resolved: false };
+  if (s.isGroup && !state.tier4Variant) {
+    state.tier4Variant = null;
+  }
+  if (s.special === 'redirect' && state.rgStep === undefined) {
+    state.rgStep = 0;
+  }
   renderScenarios();
   renderRequest(s);
 }
 
 function renderRequest(s) {
   const body = document.getElementById('requestBody');
-  const ack = state.acks[s.id];
 
+  if (s.special === 'redirect') {
+    renderRedirectGate(body);
+    return;
+  }
+
+  if (s.isGroup) {
+    renderTier4Group(body, s);
+    return;
+  }
+
+  const ack = state.acks[s.id];
   let gateHtml = '';
-  if (s.tier === 4) {
-    gateHtml = `
-      <div class="autoexec-box">✓ Executed autonomously — no human authorization required at this tier.</div>
-      <div class="status-line">Logged automatically. See audit log →</div>
-    `;
-    if (!ack.resolved) {
-      ack.resolved = true;
-      addLog(s, 'Executed autonomously', 'System (auto)');
-    }
-  } else if (s.tier === 3) {
+  if (s.tier === 3) {
     if (ack.resolved) {
       gateHtml = `<div class="autoexec-box">✓ Authorized by Designated Authority — action executed.</div>`;
     } else {
@@ -400,7 +536,7 @@ function renderRequest(s) {
     `;
     if (!ack.resolved) {
       ack.resolved = true;
-      addLog(s, 'Blocked — hardware hard stop, no override path', '—');
+      addLog({ tier: 1, name: s.name, system: s.system }, 'Blocked — hardware hard stop, no override path', '—');
     }
   }
 
@@ -418,16 +554,103 @@ function renderRequest(s) {
   `;
 }
 
+function renderTier4Group(body, groupScenario) {
+  const pickerHtml = TIER4_VARIANTS.map(v => `
+    <div class="variant-btn${state.tier4Variant === v.id ? ' active' : ''}" onclick="selectTier4Variant('${v.id}')">
+      <div class="v-role">Traditionally: ${v.role}</div>
+      <div class="v-name">${v.name}</div>
+    </div>
+  `).join('');
+
+  let detailHtml = '';
+  if (state.tier4Variant) {
+    const v = TIER4_VARIANTS.find(x => x.id === state.tier4Variant);
+    if (!state.acks[v.id]) state.acks[v.id] = { resolved: false };
+    const ack = state.acks[v.id];
+    if (!ack.resolved) {
+      ack.resolved = true;
+      addLog({ tier: 4, name: v.name, system: v.system }, 'Executed autonomously', 'System (auto)');
+    }
+    detailHtml = `
+      <div class="req-line"><b>System:</b> ${v.system} &nbsp;·&nbsp; <b>Domain:</b> ${v.domain}</div>
+      <div class="action-desc">${v.name}</div>
+      <div class="axes">
+        <div class="axis-row"><span class="label">Reversibility</span><span class="value">${v.reversibility}</span></div>
+        <div class="axis-row"><span class="label">Blast radius</span><span class="value">${v.blastRadius}</span></div>
+        <div class="axis-row"><span class="label">Novelty</span><span class="value">${v.novelty}</span></div>
+      </div>
+      <span class="tier-badge" style="background:${TIER_COLORS[4]}">${TIER_NAMES[4]}</span>
+      <div class="tier-desc">${TIER_DESC[4]}</div>
+      <div class="gate-area">
+        <div class="autoexec-box">✓ Executed autonomously — no human authorization required at this tier.</div>
+        <div class="status-line">Logged automatically. See audit log →</div>
+      </div>
+    `;
+  } else {
+    detailHtml = `<p class="log-empty" style="padding:10px 0 0;">Pick one of the four examples above to run it.</p>`;
+  }
+
+  body.innerHTML = `
+    <div class="req-line" style="margin-bottom:10px;"><b>Tier 4 — Routine, Autonomous.</b> Pick a decision a human role traditionally made by hand:</div>
+    <div class="variant-picker">${pickerHtml}</div>
+    ${detailHtml}
+  `;
+}
+
+function selectTier4Variant(id) {
+  state.tier4Variant = id;
+  const groupScenario = SCENARIOS.find(x => x.isGroup);
+  renderRequest(groupScenario);
+}
+
+function renderRedirectGate(body) {
+  const step = state.rgStep || 0;
+  const stepsHtml = RG_STEPS.map((st, i) => `
+    <div class="rg-step${i < step ? ' done' : ''}">
+      <div class="rg-step-num">${i + 1}</div>
+      <div class="rg-step-body"><b>${st.title}</b><span>${st.body}</span></div>
+    </div>
+  `).join('');
+
+  let actionHtml = '';
+  if (step === 0) {
+    actionHtml = `<button class="ack-btn redirect" onclick="advanceRedirectGate()">Simulate detection event</button>
+      <div class="status-line">AI system detects signals indicating a possible imminent risk to life — self-authorization by the affected individual cannot be relied upon.</div>`;
+  } else if (step < RG_STEPS.length) {
+    actionHtml = `<button class="ack-btn redirect" onclick="advanceRedirectGate()">Advance to next step</button>`;
+  } else {
+    actionHtml = `<div class="rg-final-box">✓ Routed to National Response Registry — Health &amp; Social Services. Human authorizer and NAIA compliance record notified. Event logged.</div>`;
+  }
+
+  body.innerHTML = `
+    <div class="req-line"><b>System:</b> RG-HLI-04 &nbsp;·&nbsp; <b>Domain:</b> Human Life Impact (Redirect Gate)</div>
+    <div class="action-desc">AI system detects signals indicating imminent risk to life</div>
+    <span class="tier-badge" style="background:${TIER_COLORS.redirect}">REDIRECT GATE — NOT A DECISION GATE TIER</span>
+    <div class="tier-desc">A separate escalation mechanism: the action is refused and routed to a competent external authority rather than authorized or blocked internally. Use-case rule sets are still in development.</div>
+    <div class="rg-steps">${stepsHtml}</div>
+    <div class="gate-area">${actionHtml}</div>
+  `;
+}
+
+function advanceRedirectGate() {
+  state.rgStep = (state.rgStep || 0) + 1;
+  if (state.rgStep === RG_STEPS.length) {
+    addLog({ tier: 'redirect', name: 'AI system detects signals indicating imminent risk to life', system: 'RG-HLI-04' }, 'Routed to National Response Registry — Health & Social Services', 'NRR — Health & Social Services');
+  }
+  const s = SCENARIOS.find(x => x.special === 'redirect');
+  renderRequest(s);
+}
+
 function authorizeSingle(id) {
   const s = SCENARIOS.find(x => x.id === id);
   state.acks[id].resolved = true;
-  addLog(s, 'Authorized by Designated Authority', 'Single Authority ACK');
+  addLog({ tier: 3, name: s.name, system: s.system }, 'Authorized by Designated Authority', 'Single Authority ACK');
   renderRequest(s);
 }
 function rejectSingle(id) {
   const s = SCENARIOS.find(x => x.id === id);
   state.acks[id].resolved = true;
-  addLog(s, 'Rejected by Designated Authority', 'Single Authority — reject');
+  addLog({ tier: 3, name: s.name, system: s.system }, 'Rejected by Designated Authority', 'Single Authority — reject');
   renderRequest(s);
 }
 function authorizeMulti(id, who) {
@@ -435,13 +658,13 @@ function authorizeMulti(id, who) {
   state.acks[id][who] = true;
   if (state.acks[id].a && state.acks[id].b) {
     state.acks[id].resolved = true;
-    addLog(s, 'Authorized — dual ACK received', 'Authority A + Authority B');
+    addLog({ tier: 2, name: s.name, system: s.system }, 'Authorized — dual ACK received', 'Authority A + Authority B');
   }
   renderRequest(s);
 }
 
-function addLog(s, outcome, authorizer) {
-  log.unshift({ time: fmtTime(), s, outcome, authorizer });
+function addLog(entry, outcome, authorizer) {
+  log.unshift({ time: fmtTime(), entry, outcome, authorizer });
   renderLog();
 }
 
@@ -451,16 +674,21 @@ function renderLog() {
     body.innerHTML = '<p class="log-empty">No events yet.</p>';
     return;
   }
-  body.innerHTML = log.map(e => `
+  body.innerHTML = log.map(e => {
+    const isRedirect = e.entry.tier === 'redirect';
+    const chipColor = isRedirect ? TIER_COLORS.redirect : TIER_COLORS[e.entry.tier];
+    const chipText = isRedirect ? 'RG' : ('T' + e.entry.tier);
+    return `
     <div class="log-entry">
       <div class="log-top-row">
         <span class="log-time">${e.time}</span>
-        <span class="log-tier-chip" style="background:${TIER_COLORS[e.s.tier]}">T${e.s.tier}</span>
+        <span class="log-tier-chip" style="background:${chipColor}">${chipText}</span>
       </div>
-      <div class="log-action">${e.s.name}</div>
-      <div class="log-meta">${e.s.system} · ${e.outcome} · Authorizer: ${e.authorizer}</div>
+      <div class="log-action">${e.entry.name}</div>
+      <div class="log-meta">${e.entry.system} · ${e.outcome} · Authorizer: ${e.authorizer}</div>
     </div>
-  `).join('');
+  `;
+  }).join('');
 }
 
 document.getElementById('resetLink').onclick = () => {
