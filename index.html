@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="The Judge Protocol (TJP) — A universal governance standard for human oversight of artificial intelligence. AI may analyze, recommend and simulate — but a human must authorize.">
+  <meta name="description" content="The Judge Protocol — A universal governance standard for human oversight of artificial intelligence. AI may analyze, recommend and simulate — but a human must authorize.">
   <meta name="keywords" content="AI governance, human oversight, artificial intelligence, IAIA, Decision Gate, HACK, open standard, Judge Protocol">
-  <meta property="og:title" content="The Judge Protocol (TJP)">
+  <meta property="og:title" content="The Judge Protocol">
   <meta property="og:description" content="A universal governance standard for human oversight of artificial intelligence.">
   <meta property="og:url" content="https://judgeprotocol.org">
   <meta property="og:image" content="https://judgeprotocol.org/og_card_1200x630.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="appletouchicon.png">
-  <title>The Judge Protocol (TJP) — Human Oversight of Artificial Intelligence</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <title>The Judge Protocol — Human Oversight of Artificial Intelligence</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=IBM+Plex+Sans:wght@300;400;600&display=swap" rel="stylesheet">
@@ -125,14 +125,14 @@
       z-index: 1;
     }
     .hero-mark {
-      flex: 0 0 540px;
+      flex: 0 0 380px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
     .hero-mark svg {
       width: 100%;
-      max-width: 500px;
+      max-width: 340px;
       height: auto;
     }
     @media (prefers-reduced-motion: reduce) {
@@ -396,53 +396,6 @@
     .doc-card p { font-size: 0.88rem; color: #666; line-height: 1.6; margin-bottom: 1rem; }
     .doc-doi { font-size: 0.78rem; color: var(--mid); font-family: monospace; }
 
-    /* ── SANDBOX ── */
-    #sandbox { background: var(--purple-l); }
-    .sandbox-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.25rem;
-      margin-top: 3rem;
-    }
-    .sandbox-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      overflow: hidden;
-      transition: all 0.2s;
-    }
-    .sandbox-card:hover { border-color: var(--purple); box-shadow: 0 4px 20px rgba(83,74,183,0.12); }
-    .sandbox-card img {
-      display: block;
-      width: 100%;
-      height: auto;
-      border-bottom: 1px solid var(--border);
-    }
-    .sandbox-card-body { padding: 1.25rem 1.5rem; }
-    .sandbox-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      color: var(--navy);
-      margin-bottom: 0.4rem;
-    }
-    .sandbox-card p { font-size: 0.88rem; color: #555; line-height: 1.6; }
-    .sandbox-note {
-      background: rgba(255,255,255,0.6);
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--purple);
-      padding: 1.25rem 1.5rem;
-      margin-top: 1.75rem;
-      border-radius: 2px;
-      font-size: 0.92rem;
-      color: #444;
-    }
-    .sandbox-actions {
-      margin-top: 2rem;
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
     /* ── LINEAGE ── */
     #lineage { background: var(--white); }
     .lineage-flow {
@@ -525,7 +478,6 @@
     <li><a href="#crisis">The Crisis</a></li>
     <li><a href="#architecture">Architecture</a></li>
     <li><a href="#documents">Documents</a></li>
-    <li><a href="#sandbox">Sandbox</a></li>
     <li><a href="https://judgeprotocol.org/Demos/judge_protocol_decision_gate_simulator.html" target="_blank">Live Demo</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -545,42 +497,37 @@
       <circle cx="340" cy="195" r="151" fill="none" stroke="#3C3489" stroke-width="3"/>
       <rect x="321" y="27" width="38" height="32" fill="#1E2761"/>
 
-      <g fill="#CADCFC" opacity="0.35">
-        <circle cx="372" cy="41"  r="1.5"/><circle cx="401" cy="52"  r="1.5"/><circle cx="426" cy="71"  r="1.5"/>
-        <circle cx="445" cy="96"  r="1.5"/><circle cx="455" cy="124" r="1.5"/><circle cx="457" cy="154" r="1.5"/>
-        <circle cx="450" cy="184" r="1.5"/><circle cx="435" cy="211" r="1.5"/><circle cx="414" cy="232" r="1.5"/>
-        <circle cx="389" cy="246" r="1.5"/><circle cx="362" cy="252" r="1.5"/><circle cx="340" cy="254" r="1.5"/>
-        <circle cx="318" cy="252" r="1.5"/><circle cx="291" cy="246" r="1.5"/><circle cx="266" cy="232" r="1.5"/>
-        <circle cx="245" cy="211" r="1.5"/><circle cx="230" cy="184" r="1.5"/><circle cx="223" cy="154" r="1.5"/>
-        <circle cx="225" cy="124" r="1.5"/><circle cx="235" cy="96"  r="1.5"/><circle cx="254" cy="71"  r="1.5"/>
-        <circle cx="279" cy="52"  r="1.5"/><circle cx="308" cy="41"  r="1.5"/>
-      </g>
-
       <g id="gate-marks" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round">
         <line x1="333.7" y1="30" x2="333.7" y2="45"/>
         <line x1="346.3" y1="30" x2="346.3" y2="45"/>
       </g>
       <circle id="pulse" cx="340" cy="37" r="3.5" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0"/>
 
-      <polygon points="340,83 414,203 266,203" fill="#171E4D" stroke="#CADCFC" stroke-width="1"/>
-      <polygon points="340,95 406,199 274,199" fill="none" stroke="#FFFFFF" stroke-width="0.5" opacity="0.3"/>
-      <line x1="340" y1="99" x2="340" y2="191" stroke="#CADCFC" stroke-width="0.5" stroke-dasharray="3 3" opacity="0.5"/>
+      <polygon points="340,83 396.7,175 283.3,175" fill="#171E4D" stroke="#CADCFC" stroke-width="1"/>
+      <polygon points="340,92.2 390.6,171.9 289.4,171.9" fill="none" stroke="#FFFFFF" stroke-width="0.5" opacity="0.3"/>
+      <line x1="340" y1="95.3" x2="340" y2="165.8" stroke="#CADCFC" stroke-width="0.5" stroke-dasharray="3 3" opacity="0.5"/>
 
-      <circle cx="340" cy="96"  r="4" fill="#FFFFFF"/>
-      <text x="340" y="109" text-anchor="middle" font-family="'Arial Narrow', Arial, sans-serif" font-size="8.5" font-weight="600" fill="#FFFFFF" letter-spacing="1">IAIA</text>
-      <line x1="322" y1="145" x2="358" y2="145" stroke="#FFFFFF" stroke-width="0.5" opacity="0.7"/>
-      <circle cx="340" cy="145" r="3" fill="#E7ECFB"/>
-      <text x="340" y="158" text-anchor="middle" font-family="'Arial Narrow', Arial, sans-serif" font-size="8.5" font-weight="600" fill="#E7ECFB" letter-spacing="1">NAIA</text>
-      <line x1="311" y1="173" x2="369" y2="173" stroke="#FFFFFF" stroke-width="0.5" opacity="0.5"/>
-      <circle cx="340" cy="187" r="3" fill="#CADCFC"/>
-      <text x="340" y="200" text-anchor="middle" font-family="'Arial Narrow', Arial, sans-serif" font-size="8.5" font-weight="600" fill="#CADCFC" letter-spacing="1">HACK</text>
+      <circle cx="340" cy="93" r="3.3" fill="#FFFFFF"/>
+      <text x="340" y="111" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="700" fill="#FFFFFF" letter-spacing="0.7">IAIA</text>
+      <line x1="326.2" y1="130.5" x2="353.8" y2="130.5" stroke="#FFFFFF" stroke-width="0.5" opacity="0.7"/>
+      <circle cx="340" cy="130.5" r="2.3" fill="#E7ECFB"/>
+      <text x="340" y="142.8" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="700" fill="#E7ECFB" letter-spacing="0.7">NAIA</text>
+      <line x1="316.2" y1="152" x2="363.8" y2="152" stroke="#FFFFFF" stroke-width="0.5" opacity="0.5"/>
+      <circle cx="340" cy="162.7" r="2.3" fill="#CADCFC"/>
+      <text x="340" y="168" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="700" fill="#CADCFC" letter-spacing="0.7">HACK</text>
 
-      <line x1="266" y1="218" x2="414" y2="218" stroke="#CADCFC" stroke-width="0.5" opacity="0.4"/>
-      <text x="340" y="236" text-anchor="middle" font-family="Georgia, serif" font-size="16" font-weight="700" fill="#FFFFFF" letter-spacing="0.5">The Judge Protocol</text>
-      <line x1="286" y1="246" x2="394" y2="246" stroke="#CADCFC" stroke-width="0.5" opacity="0.25"/>
-      <text x="340" y="259" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#CADCFC" letter-spacing="2">TJP = OPEN STANDARD</text>
-      <text x="340" y="285" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#CADCFC" letter-spacing="0.5">AI may execute —</text>
-      <text x="340" y="302" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="600" fill="#FFFFFF" letter-spacing="0.5">but a human must authorize</text>
+      <line x1="266" y1="194" x2="414" y2="194" stroke="#CADCFC" stroke-width="0.5" opacity="0.4"/>
+      <text x="340" y="215" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#FFFFFF" letter-spacing="0.3">The Judge Protocol (TJP)</text>
+      <line x1="286" y1="225" x2="394" y2="225" stroke="#CADCFC" stroke-width="0.5" opacity="0.3"/>
+      <text x="340" y="242" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#FFFFFF" letter-spacing="1">AI OPEN STANDARD</text>
+      <line x1="266" y1="252" x2="414" y2="252" stroke="#CADCFC" stroke-width="0.5" opacity="0.2"/>
+      <text x="340" y="272" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#FFFFFF" letter-spacing="0.3">AI may execute —</text>
+      <text x="340" y="290" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#FFFFFF" letter-spacing="0.3">but a human must authorize</text>
+
+      <path id="bottomTextArc" d="M 218.8,265 A 140,140 0 0,0 461.2,265" fill="none"/>
+      <text font-family="Arial, sans-serif" font-size="11" font-weight="600" fill="#FFFFFF" letter-spacing="0.7">
+        <textPath href="#bottomTextArc" startOffset="50%" text-anchor="middle">judgeprotocol.org</textPath>
+      </text>
 
       <g id="chevron">
         <polyline points="-5,-5 0,0 -5,5" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -803,40 +750,6 @@
   </div>
 </section>
 
-<!-- SANDBOX -->
-<section id="sandbox">
-  <div class="container">
-    <p class="section-label">Proof of concept</p>
-    <h2 class="section-title">A Working Sandbox, Not Just a Proposal</h2>
-    <p class="section-body">
-      Alongside the published framework, a live reference implementation runs the Decision Gate and Redirect Gate mechanisms against real infrastructure — genuine policy enforcement, a real message broker, a real audit trail. Every result shown below is the outcome of an actual command, not a simulation.
-    </p>
-    <div class="sandbox-grid">
-      <div class="sandbox-card">
-        <img src="tjp_sandbox_decision_gate_dashboard.jpg" alt="TJP Decision Gate live dashboard showing Tier 1 through Tier 4 status">
-        <div class="sandbox-card-body">
-          <h3>Decision Gate — all four tiers, live</h3>
-          <p>Tier 1 (Critical) through Tier 4 (Routine), each showing genuine status and event history sourced from the sandbox's own audit trail.</p>
-        </div>
-      </div>
-      <div class="sandbox-card">
-        <img src="tjp_sandbox_naia_cases_dashboard.jpg" alt="TJP NAIA Cases dashboard showing Decision Gate escalations">
-        <div class="sandbox-card-body">
-          <h3>NAIA Cases — escalation tracking</h3>
-          <p>Tier 1–3 attempts escalated for national authority awareness, sourced directly from the message broker's own state, not asserted by the watcher.</p>
-        </div>
-      </div>
-    </div>
-    <div class="sandbox-note">
-      <strong>Honest about scope:</strong> this is a policy-layer analog of the Decision Gate, built on OpenShell (NVIDIA's open-source AI agent sandbox, alpha), not TJP's hardware-enforced HACK mechanism. Two of four Redirect Gate use cases are explicitly illustrative, ahead of the published rule set. A live, browsable instance of the sandbox is planned as the environment matures.
-    </div>
-    <div class="sandbox-actions">
-      <a href="https://raw.githubusercontent.com/judgeprotocol/protocol/main/sandbox/tjp_sandbox_deck_26082026.pptx" class="btn btn-primary" target="_blank">Download the Sandbox Deck</a>
-      <a href="https://judgeprotocol.org/Demos/judge_protocol_decision_gate_simulator.html" class="btn btn-secondary" target="_blank">Try the Live Demo</a>
-    </div>
-  </div>
-</section>
-
 <!-- LINEAGE -->
 <section id="lineage">
   <div class="container">
@@ -901,5 +814,3 @@
     <a href="https://github.com/judgeprotocol/protocol" target="_blank">GitHub</a>
   </p>
 </footer>
-</body>
-</html>
