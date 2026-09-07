@@ -39,7 +39,7 @@ Built on the same architectural principle as TCP/IP: just as no packet is consid
 |---|---|---|
 | [Executive Summary v0.92](https://github.com/judgeprotocol/protocol/blob/main/judge_protocol_executive_summary_v0_92.pdf) | Start here — overview of the framework | [10.5281/zenodo.20401666](https://doi.org/10.5281/zenodo.20401666) |
 | [The Judge Protocol (TJP) v0.95](https://github.com/judgeprotocol/protocol/blob/main/judge_protocol_v0_95.pdf) | Full framework — governance structure, decision gate, hardware enforcement, domain rules, funding model | [10.5281/zenodo.20425548](https://doi.org/10.5281/zenodo.20425548) |
-| [Technical Architecture HLD v0.67](https://github.com/judgeprotocol/protocol/blob/main/judge_protocol_hld_v0_70.pdf) | Hardware and software architecture — HACK chip, COE, ACP, three-layer stack, phased implementation | [10.5281/zenodo.20460110](https://doi.org/10.5281/zenodo.20460110) |
+| [Technical Architecture HLD v0.70](https://github.com/judgeprotocol/protocol/blob/main/judge_protocol_hld_v0_70.pdf) | Hardware and software architecture — HACK chip, COE, ACP, three-layer stack, phased implementation | [10.5281/zenodo.20460110](https://doi.org/10.5281/zenodo.20460110) |
 | [Preprint v1.0](https://github.com/judgeprotocol/protocol/blob/main/judge_protocol_preprint_v1_0_220726a.pdf) | Formal preprint version | — |
 | [Master Deck](https://github.com/judgeprotocol/protocol/blob/main/judge_protocol_master_deck_160626a.pdf) | Presentation deck — covering the full framework for briefings and outreach | — |
 | [Positioning Note](https://github.com/judgeprotocol/protocol/blob/main/positioning_note.md) | Framework positioning relative to other AI governance proposals | — |
