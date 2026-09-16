@@ -10,51 +10,6 @@
   <meta property="og:url" content="https://judgeprotocol.org">
   <meta property="og:image" content="https://judgeprotocol.org/og_card_1200x630.png">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="https://judgeprotocol.org/">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://judgeprotocol.org/#organization",
-        "name": "The Judge Protocol Foundation",
-        "url": "https://judgeprotocol.org",
-        "logo": "https://judgeprotocol.org/tjp_logo_v2_qr_whitetext_300dpi.png",
-        "founder": {
-          "@type": "Person",
-          "name": "Alex Hofmann"
-        },
-        "foundingLocation": {
-          "@type": "Place",
-          "name": "Stockholm, Sweden"
-        },
-        "sameAs": [
-          "https://github.com/judgeprotocol/protocol",
-          "https://doi.org/10.5281/zenodo.20425548"
-        ]
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://judgeprotocol.org/#website",
-        "url": "https://judgeprotocol.org",
-        "name": "The Judge Protocol",
-        "publisher": { "@id": "https://judgeprotocol.org/#organization" }
-      },
-      {
-        "@type": "CreativeWork",
-        "name": "The Judge Protocol (TJP)",
-        "alternateName": "TJP",
-        "description": "A proposed global governance standard establishing a mandatory human authorization layer for consequential AI decisions, enforced across hardware, national, and international oversight layers.",
-        "creator": { "@id": "https://judgeprotocol.org/#organization" },
-        "license": "https://creativecommons.org/licenses/by/4.0/",
-        "identifier": "https://doi.org/10.5281/zenodo.20425548",
-        "url": "https://judgeprotocol.org",
-        "keywords": "AI governance, human oversight, artificial intelligence, IAIA, NAIA, HACK, Decision Gate, open standard"
-      }
-    ]
-  }
-  </script>
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
@@ -441,6 +396,28 @@
     .doc-card p { font-size: 0.88rem; color: #666; line-height: 1.6; margin-bottom: 1rem; }
     .doc-doi { font-size: 0.78rem; color: var(--mid); font-family: monospace; }
 
+    /* ── AI4PEACE ── */
+    #ai4peace { background: var(--white); border-top: 1px solid var(--border); }
+    .event-card {
+      background: var(--off);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--teal);
+      padding: 1.5rem 1.75rem;
+      border-radius: 2px;
+      margin-top: 2.5rem;
+      max-width: 700px;
+    }
+    .event-card .doc-tag { color: var(--teal); }
+    .event-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+    .event-card p { font-size: 0.92rem; color: #555; line-height: 1.6; }
+    .event-card .event-meta { font-size: 0.85rem; color: var(--mid); margin-top: 0.5rem; }
+
     /* ── LINEAGE ── */
     #lineage { background: var(--white); }
     .lineage-flow {
@@ -522,6 +499,7 @@
   <ul>
     <li><a href="#crisis">The Crisis</a></li>
     <li><a href="#architecture">Architecture</a></li>
+    <li><a href="#ai4peace">AI4Peace 2026</a></li>
     <li><a href="#documents">Documents</a></li>
     <li><a href="https://judgeprotocol.org/Demos/judge_protocol_decision_gate_simulator.html" target="_blank">Live Demo</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -542,37 +520,40 @@
       <circle cx="340" cy="195" r="151" fill="none" stroke="#3C3489" stroke-width="3"/>
       <rect x="321" y="27" width="38" height="32" fill="#1E2761"/>
 
+      <g fill="#CADCFC" opacity="0.35">
+        <circle cx="372" cy="41"  r="1.5"/><circle cx="401" cy="52"  r="1.5"/><circle cx="426" cy="71"  r="1.5"/>
+        <circle cx="445" cy="96"  r="1.5"/><circle cx="455" cy="124" r="1.5"/><circle cx="457" cy="154" r="1.5"/>
+        <circle cx="450" cy="184" r="1.5"/><circle cx="435" cy="211" r="1.5"/><circle cx="414" cy="232" r="1.5"/>
+        <circle cx="389" cy="246" r="1.5"/><circle cx="362" cy="252" r="1.5"/><circle cx="340" cy="254" r="1.5"/>
+        <circle cx="318" cy="252" r="1.5"/><circle cx="291" cy="246" r="1.5"/><circle cx="266" cy="232" r="1.5"/>
+        <circle cx="245" cy="211" r="1.5"/><circle cx="230" cy="184" r="1.5"/><circle cx="223" cy="154" r="1.5"/>
+        <circle cx="225" cy="124" r="1.5"/><circle cx="235" cy="96"  r="1.5"/><circle cx="254" cy="71"  r="1.5"/>
+        <circle cx="279" cy="52"  r="1.5"/><circle cx="308" cy="41"  r="1.5"/>
+      </g>
+
       <g id="gate-marks" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round">
         <line x1="333.7" y1="30" x2="333.7" y2="45"/>
         <line x1="346.3" y1="30" x2="346.3" y2="45"/>
       </g>
       <circle id="pulse" cx="340" cy="37" r="3.5" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0"/>
 
-      <polygon points="340,83 396.7,175 283.3,175" fill="#171E4D" stroke="#CADCFC" stroke-width="1"/>
-      <polygon points="340,92.2 390.6,171.9 289.4,171.9" fill="none" stroke="#FFFFFF" stroke-width="0.5" opacity="0.3"/>
-      <line x1="340" y1="95.3" x2="340" y2="165.8" stroke="#CADCFC" stroke-width="0.5" stroke-dasharray="3 3" opacity="0.5"/>
+      <polygon points="340,83 414,203 266,203" fill="#171E4D" stroke="#CADCFC" stroke-width="1"/>
+      <polygon points="340,95 406,199 274,199" fill="none" stroke="#FFFFFF" stroke-width="0.5" opacity="0.3"/>
+      <line x1="340" y1="99" x2="340" y2="191" stroke="#CADCFC" stroke-width="0.5" stroke-dasharray="3 3" opacity="0.5"/>
 
-      <circle cx="340" cy="93" r="3.3" fill="#FFFFFF"/>
-      <text x="340" y="111" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="700" fill="#FFFFFF" letter-spacing="0.7">IAIA</text>
-      <line x1="326.2" y1="130.5" x2="353.8" y2="130.5" stroke="#FFFFFF" stroke-width="0.5" opacity="0.7"/>
-      <circle cx="340" cy="130.5" r="2.3" fill="#E7ECFB"/>
-      <text x="340" y="142.8" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="700" fill="#E7ECFB" letter-spacing="0.7">NAIA</text>
-      <line x1="316.2" y1="152" x2="363.8" y2="152" stroke="#FFFFFF" stroke-width="0.5" opacity="0.5"/>
-      <circle cx="340" cy="162.7" r="2.3" fill="#CADCFC"/>
-      <text x="340" y="168" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="700" fill="#CADCFC" letter-spacing="0.7">HACK</text>
+      <circle cx="340" cy="96"  r="4" fill="#FFFFFF"/>
+      <text x="340" y="109" text-anchor="middle" font-family="'Arial Narrow', Arial, sans-serif" font-size="8.5" font-weight="600" fill="#FFFFFF" letter-spacing="1">IAIA</text>
+      <line x1="322" y1="145" x2="358" y2="145" stroke="#FFFFFF" stroke-width="0.5" opacity="0.7"/>
+      <circle cx="340" cy="145" r="3" fill="#E7ECFB"/>
+      <text x="340" y="158" text-anchor="middle" font-family="'Arial Narrow', Arial, sans-serif" font-size="8.5" font-weight="600" fill="#E7ECFB" letter-spacing="1">NAIA</text>
+      <line x1="311" y1="173" x2="369" y2="173" stroke="#FFFFFF" stroke-width="0.5" opacity="0.5"/>
+      <circle cx="340" cy="187" r="3" fill="#CADCFC"/>
+      <text x="340" y="200" text-anchor="middle" font-family="'Arial Narrow', Arial, sans-serif" font-size="8.5" font-weight="600" fill="#CADCFC" letter-spacing="1">HACK</text>
 
-      <line x1="266" y1="194" x2="414" y2="194" stroke="#CADCFC" stroke-width="0.5" opacity="0.4"/>
-      <text x="340" y="215" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#FFFFFF" letter-spacing="0.3">The Judge Protocol (TJP)</text>
-      <line x1="286" y1="225" x2="394" y2="225" stroke="#CADCFC" stroke-width="0.5" opacity="0.3"/>
-      <text x="340" y="242" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#FFFFFF" letter-spacing="1">AI OPEN STANDARD</text>
-      <line x1="266" y1="252" x2="414" y2="252" stroke="#CADCFC" stroke-width="0.5" opacity="0.2"/>
-      <text x="340" y="272" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#FFFFFF" letter-spacing="0.3">AI may execute —</text>
-      <text x="340" y="290" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#FFFFFF" letter-spacing="0.3">but a human must authorize</text>
-
-      <path id="bottomTextArc" d="M 218.8,265 A 140,140 0 0,0 461.2,265" fill="none"/>
-      <text font-family="Arial, sans-serif" font-size="11" font-weight="600" fill="#FFFFFF" letter-spacing="0.7">
-        <textPath href="#bottomTextArc" startOffset="50%" text-anchor="middle">judgeprotocol.org</textPath>
-      </text>
+      <line x1="266" y1="218" x2="414" y2="218" stroke="#CADCFC" stroke-width="0.5" opacity="0.4"/>
+      <text x="340" y="236" text-anchor="middle" font-family="Georgia, serif" font-size="16" font-weight="700" fill="#FFFFFF" letter-spacing="0.5">The Judge Protocol</text>
+      <line x1="286" y1="246" x2="394" y2="246" stroke="#CADCFC" stroke-width="0.5" opacity="0.25"/>
+      <text x="340" y="259" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#CADCFC" letter-spacing="2">TJP = OPEN STANDARD</text>
 
       <g id="chevron">
         <polyline points="-5,-5 0,0 -5,5" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -781,16 +762,37 @@
       </a>
       <a class="doc-card" href="https://doi.org/10.5281/zenodo.20425548" target="_blank">
         <p class="doc-tag">Full framework</p>
-        <h3>The Judge Protocol (TJP) v0.96</h3>
+        <h3>The Judge Protocol (TJP) v0.95</h3>
         <p>Complete governance framework — seven rules, four-tier decision gate, IAIA/NAIA structure, domain rule sets, funding model and roadmap.</p>
         <p class="doc-doi">DOI: 10.5281/zenodo.20425548</p>
       </a>
       <a class="doc-card" href="https://doi.org/10.5281/zenodo.20460110" target="_blank">
-  <p class="doc-tag">Technical architecture</p>
-  <h3>Technical Architecture HLD v0.71</h3>
-  <p>Hardware and software architecture — HACK chip, COE, ACP, three-layer stack, phased implementation from PMO through TMO to FMO silicon.</p>
-  <p class="doc-doi">DOI: 10.5281/zenodo.20460110</p>
-</a>
+        <p class="doc-tag">Technical architecture</p>
+        <h3>Technical Architecture HLD v0.67</h3>
+        <p>Hardware and software architecture — HACK chip, COE, ACP, three-layer stack, phased implementation from PMO through TMO to FMO silicon.</p>
+        <p class="doc-doi">DOI: 10.5281/zenodo.20460110</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- AI4PEACE -->
+<section id="ai4peace">
+  <div class="container">
+    <p class="section-label">Speaking · 21 September 2026</p>
+    <h2 class="section-title">The Judge Protocol at AI4Peace 2026</h2>
+    <p class="section-body">
+      Alexander Hofmann presents <em>"The Judge Protocol: Making Human Authority over AI Enforceable"</em> at the AI4Peace 2026 International Symposium — the first biennial global gathering dedicated to AI, conflict prevention and peace, co-hosted by the University for Peace (UPEACE) Rome, the Pontifical Academy for Life, and the Pontifical Lateran University, 20–22 September 2026 in Rome.
+    </p>
+    <div class="event-card">
+      <p class="doc-tag">Session</p>
+      <h3>War, Escalation and Human Control</h3>
+      <p>How hardware-enforced human authorization closes the gap between AI decision speed and the human oversight that existing governance frameworks assume.</p>
+      <p class="event-meta">Monday 21 September · 14:45–15:00 · Room B, Session 2 · Pontifical Lateran University · Chaired by Antonio Marturano</p>
+    </div>
+    <div class="hero-actions" style="margin-top:2.5rem;">
+      <a href="judge_protocol_ai4peace_talk.pdf" class="btn btn-primary" target="_blank">Download the Talk Deck</a>
+      <a href="https://www.ai4peace.ai/" class="btn btn-secondary" target="_blank">About AI4Peace 2026</a>
     </div>
   </div>
 </section>
