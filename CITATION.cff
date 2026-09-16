@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+message: "If you use or reference this work, please cite it as below."
+title: "The Judge Protocol (TJP)"
+abstract: >-
+  A universal governance standard for human oversight of AI decision-making.
+  AI may analyze, recommend and simulate — but a human must authorize.
+authors:
+  - family-names: "Hofmann"
+    given-names: "Alexander"
+    email: "judgeprotocol@pm.me"
+date-released: "2026-09-16"
+version: "0.96"
+license:
+  - "CC-BY-4.0"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.20425548"
+    description: "Main Protocol — concept DOI (all versions)"
+  - type: doi
+    value: "10.5281/zenodo.20460110"
+    description: "Technical Architecture HLD — concept DOI (all versions)"
+  - type: doi
+    value: "10.5281/zenodo.20401666"
+    description: "Executive Summary — concept DOI (all versions)"
+repository-code: "https://github.com/judgeprotocol/protocol"
+url: "https://judgeprotocol.org"
+keywords:
+  - "AI governance"
+  - "human oversight"
+  - "artificial intelligence"
+  - "IAIA"
+  - "Decision Gate"
+  - "HACK"
+  - "open standard"
